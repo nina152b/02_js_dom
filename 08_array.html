@@ -7,9 +7,10 @@
     <title>Document</title>
   </head>
   <body>
+    <h1>Playliste</h1>
     <ul id="display"></ul>
     <script>
-      const musik = [
+      const playliste = [
         "Montparnasse",
         "L'enfer",
         "Home",
@@ -22,7 +23,9 @@
         "Think",
       ];
 
-      musik.forEach((element) => console.log(element));
+      playliste.forEach(
+        (nummer) => (display.innerHTML += "<li>" + nummer + "</li>")
+      );
     </script>
   </body>
 </html>
