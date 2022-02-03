@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        padding: 5px;
+        margin: 5px;
+      }
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-gap: 20px;
+      }
+      img {
+        width: 100%;
+      }
+
+      header,
+      footer {
+        text-align: center;
+        padding: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Title</h1>
+    </header>
+    <main>
+      <h2>Undertitel</h2>
+      <section>
+        <article>
+          <img src="pics/ar1.jpg" alt="blå sten" />
+          <h3>article1</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </article>
+        <article>
+          <img src="pics/ar2.jpg" alt="ørken" />
+          <h3>article2</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </article>
+      </section>
+    </main>
+    <footer>This is the footer</footer>
+
+    <script>
+      /* her taster man ind, at siden er blevet loaded før man kan starte med at indlæse resten af JS */
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        console.log("siden er loaded");
+        const title = document.querySelector("header h1");
+        console.log(title);
+        title.textContent = "Billedegalleri";
+
+        /* Her tager vi fat i første child i article 1 */
+        const article1 = document.querySelector("article:nth-child(1)");
+        /* Her tager vi fat i billedet i første artikel */
+        const img1 = document.querySelector("article:nth-child(1) img");
+        /* Her tager vi fat i billedet i anden artikel */
+        const img2 = document.querySelector("article:nth-child(2) img");
+        /* Her tager vi fat i titlen på første artikel */
+        const article1Heading = document.querySelector(
+          "article:nth-child(1) h3"
+        );
+        /* Her tager vi fat i teksten p i første artikel */
+        const article1Content = document.querySelector(
+          "article:nth-child(1) p"
+        );
+        console.log(article1, img1, article1Heading, article1Content);
+
+        /* Her har vi lavet alt attributen om på billedet i første artikel */
+        img1.alt = "billede af blå sten";
+        /* Her har vi lavet titlen om i første artikel */
+        article1Heading.textContent = "Blå sten";
+        /* Her har vi lavet teksten om i første artikel */
+        article1Content.textContent = "Hvad så";
+        /* Her ændrer vi billederne ved at lave alt attributen om */
+        img1.src = "pics/yoga1.jpg";
+        img2.src = "pics/yoga.jpg";
+
+        let mainSection = document.querySelector("section");
+        /* nyt artikel element skabes*/
+        let newArticle = document.createElement("article");
+        /* her skaber vi indhold i den nye artikel . Vi laver en h3 */
+        let overskrift = document.createElement("h3");
+        /* her laver vi mere indhold i form af en tekst til overskriften. Her brugrer vi createTextNode som er en tekst string */
+        let overskriftText = document.createTextNode("Article 3");
+
+        /* med append.Child indsætter vi indholdet i overskriften*/
+        overskrift.appendChild(overskriftText);
+        /* her tilføjer vi overskriften til artiklen */
+        newArticle.appendChild(overskrift);
+        /* her indsætter vi artiklen til sectionen i main */
+        mainSection.appendChild(newArticle);
+      }
+    </script>
+  </body>
+</html>
