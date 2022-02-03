@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        padding: 10px;
+        margin: 10px;
+      }
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-gap: 20px;
+      }
+      img {
+        width: 100%;
+      }
+
+      header,
+      footer {
+        text-align: center;
+        padding: 10px 0;
+      }
+      .shadow {
+        box-shadow: 10px 13px 24px -3px rgba(76, 18, 237, 0.59);
+        -webkit-box-shadow: 10px 13px 24px -3px rgba(76, 18, 237, 0.59);
+        -moz-box-shadow: 10px 13px 24px -3px rgba(76, 18, 237, 0.59);
+      }
+      .noshadow {
+        box-shadow: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Title</h1>
+    </header>
+    <main>
+      <h2>Undertitel</h2>
+      <section>
+        <article>
+          <img src="billeder/billede1.jpg" alt="blå sten" />
+          <h3>article1</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </article>
+        <article>
+          <img src="billeder/billede2.jpg" alt="ørken" />
+          <h3>article2</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </article>
+      </section>
+    </main>
+    <footer>This is the footer</footer>
+
+    <script>
+      /*_______LYT EFTER DOM ER LOADED________*/
+
+      /*____her laves lytter vi efter funktionen 'start' der tjekker om alt er loaded___*/
+      document.addEventListener("DOMContentLoaded", start);
+      /*_____her defineres funktionen 'start'______*/
+      function start() {
+        console.log("dom er loaded");
+
+        /*_____her tager vi fat i titlen og overskriver hvad der står i html___*/
+        const title = document.querySelector("header h1");
+        console.log(title);
+        title.textContent = "Billedegalleri";
+        /*title.innerHTML = "<h1>Billeder</h1>";*/
+
+        /*____her tager vi fat i artirklens første barn article:nth-child(1), 1 er altså barn 1*/
+        const article1 = document.querySelector("article:nth-child(1)");
+        /*her tager vi fat i de 2 billeder med article:nth-child(1) img og article:nth-child(2) img*/
+        const img1 = document.querySelector("article:nth-child(1) img");
+        const img2 = document.querySelector("article:nth-child(2) img");
+        /*___her tager vi fat i første artikels h3, altså article:nth-child(1) h3*/
+        const article1Heading = document.querySelector(
+          "article:nth-child(1) h3"
+        );
+        const article1Content = document.querySelector(
+          "article:nth-child(1) p"
+        );
+        /*udskriver i consollen (men virker ikke)*/
+        console.log(article1, img1, article1Heading, article1Content);
+
+        img1.alt = "billede af blå sten";
+        article1Heading.textContent;
+        /*___ændre h3____*/
+        article1Heading.textContent = "Blå sten";
+        /*___ændre p________*/
+        article1Content.textContent =
+          "Her er der nogle flotte blå sten i ørkenen";
+        /*_____ændre første billede til nyt billede____*/
+        img1.src = "billeder/ekstra.jpg";
+        /*_____ændre andet billede til nyt billede____*/
+        img2.src = "billeder/ekstra.jpg";
+
+        /*___NY ARTIKEL_____*/
+
+        /*_____laver ny variabel med js____________*/
+        let newArticle = document.createElement("article");
+        /*____sætter ming ny artikel ind i section i html____*/
+        let mainSection = document.querySelector("section");
+        /*____tilføj et ekstra "barn" til section (i html) med appendChild*/
+        mainSection.appendChild(newArticle);
+        /*___laver overskrift, som vi kalder "overskrift" til den nye artikel________*/
+        let overskrift = document.createElement("h3");
+        /*_____her defineres hvad der skal stå inde i teksten_____*/
+        let overskriftText = document.createTextNode("artikel3");
+        /*______her definere hvad der skal sættes (overskrift til artikel) ind i artiklen med appendChild igen__*/
+        overskrift.appendChild(overskriftText);
+        /*______her tilføjer vi overskriften til artiklen newArticle_____*/
+        newArticle.appendChild(overskrift);
+
+        /*____kalder funktion 'skiftBillede' til at skifte billede____*/
+        document.addEventListener("click", skiftBillede);
+        /*____her defineres funktionen 'skiftBillede'_________*/
+        function skiftBillede() {
+          console.log("her skifter billedet");
+          /*____linket er et link til forskellige billeder, og der bruges Math.round (runder op) og Math.random (random billede)*/
+          img1.src =
+            "https://placeimg.com/400/300/arch?t=" +
+            Math.round(Math.random() * 10);
+        }
+
+        //kalder på funktionen shadowOn
+        document
+          .querySelector("article")
+          .addEventListener("mouseover", shadowOn);
+
+        //forholder sig til at menuen skifter mellem at have klassen "shadow" og ikke
+        function shadowOn() {
+          console.log("shadow is on");
+          document.querySelector("article").classList.toggle("shadow");
+          //definere variabel let, som er når artiklen har klassen "shadow"
+          let erSkjult = document
+            .querySelector("article")
+            .classList.contains("shadow");
+          //ved at bruge variabel let til at skife mellem if or else med tegn herunder, når artiklen har skygge
+          if (erSkjult == true) {
+            document.querySelector("article").classList.contains("shadow");
+          } else {
+            document
+              .querySelector("article")
+              .addEventListener("mouseout", shadowOut);
+          }
+          function shadowOut() {
+            document.querySelector("article").classList.remove("shadow");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

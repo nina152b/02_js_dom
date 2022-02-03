@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <img src="slideshow_pic/img1.png" alt="billede1" />
+        <img src="slideshow_pic/img2.png" alt="billede2" />
+        <img src="slideshow_pic/img3.png" alt="billede3" />
+        <img src="slideshow_pic/img4.png" alt="billede4" />
+        <img src="slideshow_pic/img5.png" alt="billede5" />
+        <img src="slideshow_pic/img6.png" alt="billede6" />
+        <img src="slideshow_pic/img7.png" alt="billede7" />
+        <img src="slideshow_pic/img8.png" alt="billede8" />
+        <button>Klik</button>
+      </article>
+    </main>
+    <script>
+      const img1 = document.querySelector("slideshow_pic/img1.png");
+      const img2 = document.querySelector("slideshow_pic/img2.png");
+      const img3 = document.querySelector("slideshow_pic/img3.png");
+      const img4 = document.querySelector("slideshow_pic/img4.png");
+      const img5 = document.querySelector("slideshow_pic/img5.png");
+      const img6 = document.querySelector("slideshow_pic/img6.png");
+      const img7 = document.querySelector("slideshow_pic/img7.png");
+      const img8 = document.querySelector("slideshow_pic/img8.png");
+      const billeder = ["img1", "img2", "img3", "img4", "img5", "img6", "img7"];
+
+      document.addEventListener("click, visBilled");
+
+      function visBilled(element) {
+        console.log("Billedet skifter");
+        document.querySelector("#button") + Math.round(Math.random() * 8);
+        billeder.forEach(visBilled);
+      }
+    </script>
+  </body>
+</html>
