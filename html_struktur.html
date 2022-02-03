@@ -5,8 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            padding: 5px;
+            margin: 5px;
+        }
+        section{
+            display: grid;
+            grid-template-columns:repeat(auto-fit,minmax(400px,1fr)) ;
+            grid-gap: 20px;
+        }
+        img {
+            width: 100%;
+        }
+
+        header,
+        footer {
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+
 </head>
 <body>
-    
+<header>
+    <h1>Title</h1>
+</header>
+<main>
+    <h2>Undertitel</h2>
+    <section>
+        <article>
+            <img src="pics/ar1.jpg" alt="blå sten">
+            <h3>article1</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        </article>
+        <article>
+            <img src="pics/ar2.jpg" alt="ørken">
+            <h3>article2</h2>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        </article>
+    </section>
+</main>
+    <footer>This is the footer</footer>
+
+    <script>
+        const title = document.querySelector("header h1");
+        console.log(title);
+        title.textContent = "Billedegalleri";
+        /*title.innerHTML = "<h1>Billeder</h1>";*/
+
+        const pic1 = document.querySelector("article:first-child img");
+        console.log(pic1);
+        pic1.alt = "billede af blå sten";
+
+    </script>
 </body>
 </html>
